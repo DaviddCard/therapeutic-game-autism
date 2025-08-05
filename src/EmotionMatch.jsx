@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useState } from 'react';
 
 const rounds = [
   {
@@ -14,7 +13,7 @@ const rounds = [
   }
 ];
 
-export default function EmotionMatch() {
+function EmotionMatch() {
   const [roundIndex, setRoundIndex] = useState(0);
   const [feedback, setFeedback] = useState("");
 
@@ -33,54 +32,28 @@ export default function EmotionMatch() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.prompt}>{round.prompt}</Text>
-      <View style={styles.emojiContainer}>
+    <div style={{ textAlign: 'center' }}>
+      <h2>{round.prompt}</h2>
+      <div style={{ fontSize: '2rem', margin: '1rem' }}>
         {round.options.map((emoji) => (
-          <TouchableOpacity
+          <button
             key={emoji}
-            onPress={() => handleGuess(emoji)}
-            style={styles.button}
+            onClick={() => handleGuess(emoji)}
+            style={{
+              fontSize: '2rem',
+              margin: '0.5rem',
+              padding: '1rem',
+              borderRadius: '12px',
+              border: '2px solid #ccc'
+            }}
           >
-            <Text style={styles.emoji}>{emoji}</Text>
-          </TouchableOpacity>
+            {emoji}
+          </button>
         ))}
-      </View>
-      {feedback !== "" && <Text style={styles.feedback}>{feedback}</Text>}
-    </View>
+      </div>
+      {feedback && <p>{feedback}</p>}
+    </div>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 32,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  prompt: {
-    fontSize: 24,
-    marginBottom: 20,
-    fontWeight: 'bold',
-  },
-  emojiContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginBottom: 20,
-    gap: 16,
-  },
-  button: {
-    backgroundColor: '#f0f0f0',
-    borderRadius: 12,
-    padding: 16,
-    marginHorizontal: 8,
-  },
-  emoji: {
-    fontSize: 32,
-  },
-  feedback: {
-    fontSize: 18,
-    color: '#333',
-  },
-});
+export default EmotionMatch;
