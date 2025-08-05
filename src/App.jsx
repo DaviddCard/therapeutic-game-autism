@@ -1,11 +1,11 @@
+import React from 'react';
+import { View } from 'react-native';
 import EmotionMatch from './EmotionMatch';
 
-function App() {
+export default function App() {
   return (
-    <div>
+    <View style={{ flex: 1 }}>
       <EmotionMatch />
-    </div>
+    </View>
   );
 }
-
-export default App;
