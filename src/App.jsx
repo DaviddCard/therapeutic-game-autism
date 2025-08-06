@@ -1,4 +1,4 @@
-import EmotionMatch from './EmotionMatch';
+import EmotionMatch from './components/EmotionMatch';
 
 function App() {
   return (
